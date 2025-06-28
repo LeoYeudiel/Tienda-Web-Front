@@ -1,0 +1,46 @@
+section{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+section form{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+section form .input-group input{
+  border: solid thin #000;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  resize: none;
+}
+
+section form button{
+  border: none;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: var(--secondaryColor);
+  box-shadow: 3px 3px 0 2px var(--primaryColor);
+  transition: 0.5s;
+}
+
+section form button:hover{
+  background-color: var(--secondaryColorHover);
+  box-shadow: 4px 4px 0 3px var(--primaryColor);
+}
+
+@media (width <= 800px) {
+  section{
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+}

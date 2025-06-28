@@ -1,0 +1,13 @@
+<article>
+  <div class="contentImg">
+    <img src="nintendo.png" alt="Imagen del producto">
+  </div>
+  <div class="contentInfo">
+    <h4>{{product().nombre}}</h4>
+    <span>{{product().precio | currency }}</span>
+    <button (click)="removeProduct()">Remove</button>
+  </div>
+  <form>
+    <input type="number" name="count" [(ngModel)]="product().cantidad" (change)="modifiedProduct()">
+  </form>
+</article>

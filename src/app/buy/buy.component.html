@@ -1,0 +1,30 @@
+<section>
+  <form>
+    <h2>Información personal</h2>
+    <p>Para completar su pedido, requerimos que llene este formulario</p>
+    <div class="input-group">
+      <label for="nombre">Nombre:</label>
+      <input type="text" name="nombre">
+    </div>
+    <div class="input-group">
+      <label for="correo">Correo:</label>
+      <input type="text" name="correo">
+    </div>
+    <div class="input-group">
+      <label for="telefono">Télefono:</label>
+      <input type="text" name="telefono">
+    </div>
+    <div class="input-group">
+      <label for="direccion">Dirección:</label>
+      <input type="text" name="direccion">
+    </div>
+    <button> Completar compra </button>
+  </form>
+  <div class="articulos">
+    <h2>Tus Compras</h2>
+    @for (producto of shopCarService.myProducts; track producto.idProducto) {
+      <app-product-car [product]="producto"/>
+    }
+    <span>Total: </span> {{ shopCarService.total | currency }}
+  </div>
+</section>

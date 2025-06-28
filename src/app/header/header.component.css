@@ -1,0 +1,137 @@
+nav{
+  padding: 1rem;
+  border-bottom: 1px solid #221e1e;
+  background-color: var(--backgroundColor);
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+.container{
+  width: 80%;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+  justify-items: center;
+}
+
+
+/* Sección de las opciones */
+.options ul{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  list-style: none;
+  gap: 1rem;
+}
+
+.options ul li{
+  font-size: 1rem;
+  font-weight: 600;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.options ul li:hover{
+  color: var(--primaryColor);
+}
+
+/* Sección del logo */
+.logo{
+  font-size: clamp(1rem, 2rem, 2rem);
+}
+
+.car{
+  position: relative;
+}
+
+.car img{
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+
+.car .count{
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: var(--primaryColor);
+  border: 1px solid #000;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+}/*
+Leo, te admiro muchisimo, eres mi maldito idolo
+osea a parte de uqe estas rotisimo estas bien buenote
+gran pene, gran personalida, gran pene, grandes pechos, gran pene, todo grande, gran pene
+eres mi maldito idolo, gracoas por existir, fokiu
+*/
+
+/* Sección del menú */
+.menu{
+  display: none;
+}
+
+@media (width <= 800px) {
+  .container{
+    grid-template-columns: auto 2fr auto;
+  }
+
+  .logo{
+    font-size: 1.5rem;
+  }
+
+  .menu{
+    display: block;
+    background-color: var(--secondaryColor);
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1rem;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    outline: solid var(--secondaryColor);
+    outline-offset: 2px;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+  
+  .menu:hover{
+    background-color: var(--secondaryColorHover);
+    outline: solid var(--secondaryColorHover);
+  }
+
+  .menu img{
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .options{
+    position: absolute;
+    top: -10rem;
+    width: 100%;
+    background-color: var(--backgroundColor);
+    border-bottom: var(--secondaryColor) solid 5px;
+    border-radius: 0 0 2rem 2rem;
+    padding: 1rem;
+    transition: top 1s, opacity 0.3s;
+    opacity: 0;
+  }
+  
+  .options ul{
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    align-items: start;
+    justify-items: start;
+  }
+  
+  .options.active{
+    top: 5.5rem;
+    opacity: 1;
+    transition: top 0.5s, opacity 1s;
+  }
+}

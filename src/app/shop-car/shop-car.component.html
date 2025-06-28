@@ -1,0 +1,26 @@
+<div class="black" (click)="onClose()"></div>
+
+<div class="shop-car">
+  <div class="header-car">
+    <h2>Tu carrito</h2>
+    <img src="x.svg" alt="close" (click)="onClose()">
+  </div>
+  <div class="body-car">
+    @if(shopCarService.myProducts.length > 0){
+      @for (producto of shopCarService.myProducts; track producto.idProducto) {
+        <app-product-car [product]="producto"/>
+      }
+    } @else {
+      <img src="cart-plus.svg" alt="Agregar productos">
+      <button routerLink="/home" (click)="onClose()">Compra Ahora</button>
+    }
+  </div>
+  <div class="footer-car">
+    @if (shopCarService.myProducts.length > 0) {
+      <p>
+        <span>Total:</span> {{shopCarService.total | currency}}
+      </p>
+      <button routerLink="/buy">Terminar Compra</button>
+    }
+  </div>
+</div>

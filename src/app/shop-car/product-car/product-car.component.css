@@ -1,0 +1,55 @@
+:host{
+  width: 100%;
+}
+
+article{
+  display: grid;
+  grid-template-columns: 1fr 2fr 7ch;
+  width: 100%;
+  gap: 0.8rem;
+  justify-items: center;
+  align-items: center;
+}
+
+/* Parte de la imagen */
+article .contentImg{
+  grid-area: span 1 / span 1 / span 1 / span 1;
+  border: thin solid #000;
+  border-radius: 0.5rem;
+  padding: 0.2rem;
+}
+
+article .contentImg img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Parte de enmedio */
+article .contentInfo{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+article .contentInfo button{
+  border: none;
+  background-color: transparent;
+  text-decoration: underline;
+  cursor: pointer;
+  text-align: left;
+  width: 6ch;
+}
+
+article .contentInfo button:hover{
+  color: var(--primaryColor);
+}
+
+/* Parte del input */
+form input{
+  border: solid thin #000;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}

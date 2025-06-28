@@ -1,0 +1,74 @@
+section{
+  width: 100%;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  align-content: center;
+  gap: 4rem;
+}
+
+section .contentImg{
+  grid-area: span 1 / span 1 / span 1 / span 1;
+  border: 2px solid #000;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+section .contentImg img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+section .contentInfo{
+  display: flex;
+  flex-direction: column;
+}
+
+section .contentInfo h2{
+  font-size: 4rem;
+}
+
+section .contentInfo span{
+  color: var(--primaryColor);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+section .contentInfo p{
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+section .contentInfo form{
+  width: 100%;
+  background-color: var(--auxColor);
+  padding: 2rem;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+section .contentInfo form input{
+  border: solid thin #000;
+  width: 10ch;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+section .contentInfo form button{
+  border: none;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: var(--secondaryColor);
+  box-shadow: 3px 3px 0 2px var(--primaryColor);
+  transition: 0.5s;
+}
+
+@media (width <= 800px) {
+  section{
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+}

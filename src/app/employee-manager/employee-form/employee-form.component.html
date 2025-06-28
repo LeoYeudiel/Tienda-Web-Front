@@ -1,0 +1,35 @@
+<div class="black" (click)="onClose()"></div>
+
+<div class="form-container">
+  <img src="x.svg" alt="close" (click)="onClose()">
+  <form>
+    <h3>{{ employee().idEmpleado != 0 ? "Editar": "Añadir"}} empleado {{ employee().idEmpleado != 0 ? employee().idEmpleado : ""}}</h3>
+    <div class="input-group">
+      <label for="nombre">Nombre del empleado</label>
+      <input type="text" name="nombre" [(ngModel)]="employee().nombre">
+    </div>
+    <div class="input-group">
+      <label for="correo">Correo del empleado</label>
+      <input type="text" name="correo" [(ngModel)]="employee().correo">
+    </div>
+    <div class="input-group">
+      <label for="telefono">Teléfono del empleado</label>
+      <input type="text" name="telefono" [(ngModel)]="employee().telefono">
+    </div>
+    <div class="row">
+      <div class="input-group">
+        <label for="cargo">Cargo del empleado</label>
+        <input type="text" name="cargo" [(ngModel)]="employee().cargo">
+      </div>
+      <div class="input-group">
+        <label for="salario">Salario del empleado</label>
+        <input type="number" name="salario" [(ngModel)]="employee().salario">
+      </div>
+    </div>
+    @if (employee().idEmpleado != 0) {
+      <button (click)="editEmployee()">Editar</button>
+    }@else {
+      <button (click)="addEmployee()">Añadir</button>
+    }
+  </form>
+</div>

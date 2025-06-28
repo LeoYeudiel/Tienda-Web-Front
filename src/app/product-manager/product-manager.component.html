@@ -1,0 +1,34 @@
+<section>
+  <table>
+    <thead>
+      <tr>
+        <td colspan="4"><h2>Gestión de productos</h2></td>
+        <td colspan="2">
+          <button (click)="onCloseModal()">Nuevo Producto +</button>
+        </td>
+      </tr>
+      <tr>
+        <td>ID</td>
+        <td>Nombre</td>
+        <td>Precio</td>
+        <td>Stock</td>
+        <td colspan="2">Acciones</td>
+      </tr>
+    </thead>
+    <tbody>
+        @for (producto of productsService.productsStock; track producto.idProducto) {
+          <tr>
+            <td>{{ producto.idProducto }}</td>
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.precio | currency}}</td>
+            <td>{{ producto.stock }}</td>
+            <td><button class="edit" (click)="editProduct(producto)">Editar</button></td>
+            <td><button class="delete" (click)="deleteProduct(producto.idProducto)">Eliminar</button></td>
+          </tr>
+        }
+    </tbody>
+  </table>
+</section>
+@if (isVisible) {
+  <app-product-form (close)="onCloseModal()" [product]="selectecProduct"/>
+}

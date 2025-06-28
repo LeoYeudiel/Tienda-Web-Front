@@ -1,0 +1,8 @@
+<div class="container">
+  <h2>Nuestros Productos</h2>
+  <section>
+    @for (product of products; track product.idProducto) {
+      <app-product [product]="product" [routerLink]="['/detailProduct', product.idProducto]"/>
+    }
+  </section>
+</div>

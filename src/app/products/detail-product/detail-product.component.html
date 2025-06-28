@@ -1,0 +1,14 @@
+<section>
+  <div class="contentImg">
+    <img src="nintendo.png" alt="Imagen del producto">
+  </div>
+  <div class="contentInfo">
+    <h2>{{product?.nombre}}</h2>
+    <span>{{product?.precio | currency}}</span>
+    <p>{{product?.descripcion}}</p>
+    <form>
+      <input type="number" name="count" [(ngModel)]="count">
+      <button (click)="addProductCar()">Añadir al carrito</button>
+    </form>
+  </div>
+</section>

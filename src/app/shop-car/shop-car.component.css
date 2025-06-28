@@ -1,0 +1,110 @@
+/* Fondo oscuro */
+.black{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #00000069;
+  z-index: 10;
+  top: 0;
+}
+
+.shop-car{
+  position: fixed;
+  height: 100%;
+  background-color: var(--backgroundColor);
+  z-index: 15;
+  top: 0;
+  right: 0;
+  min-width: 320px;
+  max-width: 480px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+
+/* Header del carrito */
+.shop-car .header-car{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  padding: 1rem;
+  border-bottom: solid thin #000;
+}
+
+.shop-car .header-car h2{
+  font-size: 2rem;
+}
+
+.shop-car .header-car img{
+  width: 2.8rem;
+  height: 2.8rem;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.shop-car .header-car img:hover{
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+}
+
+/* Body */
+.shop-car .body-car{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.shop-car .body-car img{
+  width: 5rem;
+  height: 5rem;
+}
+
+.shop-car .body-car button{
+  border: none;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: var(--secondaryColor);
+  box-shadow: 3px 3px 0 2px var(--primaryColor);
+  transition: 0.5s;
+}
+
+.shop-car .body-car button:hover{
+  background-color: var(--secondaryColorHover);
+  box-shadow: 4px 4px 0 3px var(--primaryColor);
+}
+
+/* Footer */
+.shop-car .footer-car{
+  width: 100%;
+  padding: 1rem;
+}
+
+.shop-car .footer-car p{
+  margin-left: 1rem;
+}
+
+.shop-car .footer-car p span{
+  font-weight: bolder;
+}
+
+.shop-car .footer-car button{
+  width: 100%;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  background-color: var(--backgroundColor);
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 3px 3px 0 2px var(--primaryColor);
+  transition: 0.5s;
+}
+
+.shop-car .footer-car button:hover{
+  background-color: var(--backgroundColorHover);
+  box-shadow: 4px 4px 0 3px var(--primaryColor);
+}

@@ -1,0 +1,108 @@
+.container{
+  display: grid;
+  grid-template-rows: 1fr;
+}
+
+/* Contenido principal */
+main{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* Parte izquierda del contenido principal */
+main .left{
+  display: grid;
+  grid-template-rows: 2fr 1fr 1fr;
+  gap: 0.5rem;
+  justify-items: left;
+  background: #FFF;
+  background: linear-gradient(270deg,rgba(255, 255, 255, 1) 0%, var(--thirdColor) 100%);
+  border-bottom: thin solid #000;
+  padding:4rem;
+}
+
+main .left h2{
+  font-size: 3rem;  
+}
+
+main .left p{
+  font-size: 1rem;
+  font-weight: bold;
+  font-style: italic;
+  width: 80%;
+}
+
+main .left button{
+  width: 30%;
+  border: none;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: var(--backgroundColor);
+  box-shadow: 3px 3px 0 2px var(--primaryColor);
+  transition: 0.5s;
+}
+
+main .left button:hover{
+  background-color: var(--backgroundColorHover);
+  box-shadow: 4px 4px 0 3px var(--primaryColor);
+}
+
+/* Parte derecha del contenido principal */
+main .rigth{
+  background: linear-gradient(90deg,rgba(255, 255, 255, 1) 0%,var(--thirdColor) 100%);
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-bottom: thin solid #000;
+  position: relative;
+}
+
+main .rigth .contentBox{
+  width: 320px;
+  height: 320px;
+  position: relative;
+}
+
+main .rigth img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index: 5;
+}
+
+main .rigth svg{
+  width: 450px;
+  height: 450px;
+  position: absolute;
+  left: -80px;
+  top: -80px;
+  z-index: 0;
+}
+
+@media (width <= 800px) {
+  main{
+    grid-template-columns: 1fr;
+  }
+  
+  main .left{
+    grid-template-rows: 1fr 1fr 0.5fr;
+    gap: 1rem;
+    padding: 2rem;
+    background: linear-gradient(0deg,rgba(255, 255, 255, 1) 0%,var(--thirdColor) 100%);
+  }
+
+  main .left h2{
+    font-size: 2rem;
+  }
+  
+  main .left p{
+    font-size: 1rem;
+  }
+
+  main .rigth{
+    display: none;
+  }
+}

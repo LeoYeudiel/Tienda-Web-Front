@@ -1,0 +1,31 @@
+<div class="black" (click)="onClose()"></div>
+
+<div class="form-container">
+  <img src="x.svg" alt="close" (click)="onClose()">
+  <form>
+    <h3>{{ product().idProducto != 0 ? "Editar": "Añadir"}} producto {{ product().idProducto != 0 ? product().idProducto : ""}}</h3>
+    <div class="input-group">
+      <label for="nombre">Nombre del producto</label>
+      <input type="text" name="nombre" [(ngModel)]="product().nombre">
+    </div>
+    <div class="input-group">
+      <label for="descripcion">Descripción del producto</label>
+      <textarea name="descripcion" [(ngModel)]="product().descripcion"></textarea>
+    </div>
+    <div class="row">
+      <div class="input-group">
+        <label for="precio">Precio del producto</label>
+        <input type="number" name="precio" [(ngModel)]="product().precio">
+      </div>
+      <div class="input-group">
+        <label for="precio">Stock del producto</label>
+        <input type="number" name="precio" [(ngModel)]="product().stock">
+      </div>
+    </div>
+    @if (product().idProducto != 0) {
+      <button (click)="editProduct()">Editar</button>
+    }@else {
+      <button (click)="addProduct()">Añadir</button>
+    }
+  </form>
+</div>

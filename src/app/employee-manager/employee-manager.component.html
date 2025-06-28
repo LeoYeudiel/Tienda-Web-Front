@@ -1,0 +1,38 @@
+<section>
+  <table>
+    <thead>
+      <tr>
+        <td colspan="4"><h2>Gestión de empleados</h2></td>
+        <td colspan="2">
+          <button (click)="onCloseModal()">Nuevo empleado +</button>
+        </td>
+      </tr>
+      <tr>
+        <td>ID</td>
+        <td>Nombre</td>
+        <td>Correo</td>
+        <td>Teléfono</td>
+        <td>Cargo</td>
+        <td>Salario</td>
+        <td colspan="2">Acciones</td>
+      </tr>
+    </thead>
+    <tbody>
+        @for (empleado of empleadoService.empleados; track empleado.idEmpleado) {
+          <tr>
+            <td>{{ empleado.idEmpleado }}</td>
+            <td>{{ empleado.nombre }}</td>
+            <td>{{ empleado.correo }}</td>
+            <td>{{ empleado.telefono }}</td>
+            <td>{{ empleado.cargo }}</td>
+            <td>{{ empleado.salario | currency}}</td>
+            <td><button class="edit" (click)="editEmployee(empleado)">Editar</button></td>
+            <td><button class="delete" (click)="deleteEmployee(empleado.idEmpleado)">Eliminar</button></td>
+          </tr>
+        }
+    </tbody>
+  </table>
+</section>
+@if (isVisible) {
+  <app-employee-form (close)="onCloseModal()" [employee]="selectecEmployee"/>
+}

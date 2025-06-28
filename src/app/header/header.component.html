@@ -1,0 +1,33 @@
+<nav>
+  <div class="container">
+    <div class="menu" (click)="openMenu()">
+      <img src="list.svg" alt="Menú desplegable">
+    </div>
+    <div class="options" [class.active]="clickMenu">
+      <ul>
+        <li routerLink="/home">
+          Inicio
+        </li>
+        <li routerLink="/productManager">
+          Productos
+        </li>
+        <li routerLink="/employeeManager">
+          Empleados
+        </li>
+      </ul>
+    </div>
+    <div class="logo">
+      <h1>Toy Store</h1>
+    </div>
+    <div class="car" (click)="openCar()">
+      <img src="cart2.svg" alt="Carrito de compra">
+      @if (shopCarService.myProducts.length > 0) {
+        <div class="count">{{ shopCarService.myProducts.length }}</div>
+      }
+    </div>
+  </div>
+</nav>
+
+@if(clickCar){
+  <app-shop-car (close)="openCar()"/>
+}
