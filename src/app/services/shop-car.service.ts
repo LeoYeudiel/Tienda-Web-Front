@@ -17,7 +17,7 @@ export class ShopCarService{
     this.myProducts =  [
       ...this.myProducts,
       {
-        idProducto: product.idProducto,
+        idProducto: product.idProducto!,
         nombre: product.nombre,
         subtotal: cantidad * product.precio,
         cantidad: cantidad,

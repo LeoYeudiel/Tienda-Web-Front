@@ -18,7 +18,7 @@
       </tr>
     </thead>
     <tbody>
-        @for (empleado of empleadoService.empleados; track empleado.idEmpleado) {
+        @for (empleado of employees; track empleado.idEmpleado) {
           <tr>
             <td>{{ empleado.idEmpleado }}</td>
             <td>{{ empleado.nombre }}</td>
@@ -27,7 +27,7 @@
             <td>{{ empleado.cargo }}</td>
             <td>{{ empleado.salario | currency}}</td>
             <td><button class="edit" (click)="editEmployee(empleado)">Editar</button></td>
-            <td><button class="delete" (click)="deleteEmployee(empleado.idEmpleado)">Eliminar</button></td>
+            <td><button class="delete" (click)="deleteEmployee(empleado.idEmpleado!)">Eliminar</button></td>
           </tr>
         }
     </tbody>

@@ -2,10 +2,12 @@ import { Component, inject, input, output } from '@angular/core';
 import { Empleado } from '../../models/employee.model';
 import { FormsModule } from '@angular/forms';
 import { EmployeeService } from '../../services/employee.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-employee-form',
   imports: [FormsModule],
+  standalone: true,
   templateUrl: './employee-form.component.html',
   styleUrl: './employee-form.component.css'
 })
@@ -27,13 +29,10 @@ export class EmployeeFormComponent {
   }
 
   addEmployee() {
-    this.employee().idEmpleado = Math.floor((Math.random() * 9999)) + 1;
-    this.employeeService.addEmployee(this.employee())
-    this.close.emit()
+    this.employeeService.addEmployee(this.employee()).subscribe((empleado) => this.close.emit())
   }
 
   editEmployee() {
-    this.employeeService.editEmployee(this.employee())
-    this.close.emit()
+    this.employeeService.editEmployee(this.employee()).subscribe((empleado) => this.close.emit())
   }
 }

@@ -1,30 +1,52 @@
 import { Injectable } from '@angular/core';
 import { Empleado } from '../models/employee.model';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map, Observable } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
-  empleados: Empleado[] = [
-  ];
+  private urlEndPoint: string = "http://localhost:8082/apiWeb/empleado"
 
-  constructor() { }
+  private httpHeaders = new HttpHeaders(
+    {
+      'ContentType': 'application/json'
+    }
+  )
 
-  addEmployee(data: Empleado) {
-    this.empleados.push(data);
+  constructor(private http: HttpClient) { }
+
+  showEmployees(): Observable<Empleado[]>{
+    return this.http.get<Empleado[]>(this.urlEndPoint)
   }
 
-  editEmployee(editEmpleado: Empleado) {
-    this.empleados = this.empleados.map((empleado) => {
-      if (empleado.idEmpleado == editEmpleado.idEmpleado) {
-        empleado = editEmpleado
-      }
-      return empleado;
-    })
+  getEmployee(idEmpleado: number): Observable<Empleado>{
+    return this.http.get<Empleado>(`${this.urlEndPoint}/${idEmpleado}`)
   }
 
-  deleteEmployee(idEmpleado: number) {
-    this.empleados = this.empleados.filter((empleado) => empleado.idEmpleado != idEmpleado);
+  addEmployee(data: Empleado): Observable<Empleado> {
+    delete data.idEmpleado;
+    return this.http.post<Empleado>(
+      `${this.urlEndPoint}`,
+      data,
+      {headers:this.httpHeaders}
+    )
+  }
+
+  editEmployee(editEmpleado: Empleado): Observable<Empleado> {
+    return this.http.put<Empleado>(
+      `${this.urlEndPoint}/${editEmpleado.idEmpleado}`,
+      editEmpleado,
+      {headers:this.httpHeaders}
+    )
+  }
+
+  deleteEmployee(idEmpleado: number): Observable<Empleado> {
+    return this.http.delete<Empleado>(
+      `${this.urlEndPoint}/${idEmpleado}`,
+      {headers:this.httpHeaders}
+    ) 
   }
 }

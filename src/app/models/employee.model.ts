@@ -1,5 +1,5 @@
 export type Empleado = {
-  idEmpleado: number;
+  idEmpleado?: number;
   nombre: string;
   correo: string;
   telefono: string;
