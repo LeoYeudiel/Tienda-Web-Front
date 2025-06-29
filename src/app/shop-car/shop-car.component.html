@@ -20,7 +20,7 @@
       <p>
         <span>Total:</span> {{shopCarService.total | currency}}
       </p>
-      <button routerLink="/buy">Terminar Compra</button>
+      <button routerLink="/buy" (click)="onClose()">Terminar Compra</button>
     }
   </div>
 </div>

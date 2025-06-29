@@ -3,7 +3,6 @@ import { Empleado } from '../models/employee.model';
 import { EmployeeFormComponent } from "./employee-form/employee-form.component";
 import { CurrencyPipe } from '@angular/common';
 import { EmployeeService } from '../services/employee.service';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-employee-manager',

@@ -31,7 +31,7 @@ export class DetailProductComponent implements OnInit{
   mostrarProducto() {
     this.activatedRoute.params.subscribe((params) => {
       let idProducto = params['idProducto'];
-      this.product = this.productsService.productsStock.find((stockProduct) => stockProduct.idProducto == idProducto);
+      this.productsService.getProduct(idProducto).subscribe((producto) => this.product = producto)
     })
   }
 

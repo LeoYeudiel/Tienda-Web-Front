@@ -16,14 +16,14 @@
       </tr>
     </thead>
     <tbody>
-        @for (producto of productsService.productsStock; track producto.idProducto) {
+        @for (producto of products; track producto.idProducto) {
           <tr>
             <td>{{ producto.idProducto }}</td>
             <td>{{ producto.nombre }}</td>
             <td>{{ producto.precio | currency}}</td>
             <td>{{ producto.stock }}</td>
             <td><button class="edit" (click)="editProduct(producto)">Editar</button></td>
-            <td><button class="delete" (click)="deleteProduct(producto.idProducto)">Eliminar</button></td>
+            <td><button class="delete" (click)="deleteProduct(producto.idProducto!)">Eliminar</button></td>
           </tr>
         }
     </tbody>
