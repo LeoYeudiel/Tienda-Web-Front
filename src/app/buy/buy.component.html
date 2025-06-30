@@ -4,21 +4,29 @@
     <p>Para completar su pedido, requerimos que llene este formulario</p>
     <div class="input-group">
       <label for="nombre">Nombre:</label>
-      <input type="text" name="nombre">
+      <input type="text" name="nombre" [(ngModel)]="client.nombre">
     </div>
     <div class="input-group">
       <label for="correo">Correo:</label>
-      <input type="text" name="correo">
+      <input type="text" name="correo" [(ngModel)]="client.correo">
     </div>
     <div class="input-group">
       <label for="telefono">Télefono:</label>
-      <input type="text" name="telefono">
+      <input type="text" name="telefono" [(ngModel)]="client.telefono">
     </div>
     <div class="input-group">
       <label for="direccion">Dirección:</label>
-      <input type="text" name="direccion">
+      <input type="text" name="direccion" [(ngModel)]="client.direccion">
     </div>
-    <button> Completar compra </button>
+    <div class="input-group">
+      <label for="pago">Método de pago:</label>
+      <select name="pago" (change)="getPago($event)">
+        <option value="Efectivo">Efectivo</option>
+        <option value="Tarjeta de crédito">Tarjeta de crédito</option>
+        <option value="Tarjeta de débito">Tarjeta de débito</option>
+      </select>
+    </div>
+    <button (click)="onBuy()"> Completar compra </button>
   </form>
   <div class="articulos">
     <h2>Tus Compras</h2>

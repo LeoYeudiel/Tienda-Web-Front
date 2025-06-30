@@ -7,7 +7,7 @@
     <span>{{product?.precio | currency}}</span>
     <p>{{product?.descripcion}}</p>
     <form>
-      <input type="number" name="count" [(ngModel)]="count">
+      <input type="number" name="count" [(ngModel)]="count" min="0" [max]="product?.stock!">
       <button (click)="addProductCar()">Añadir al carrito</button>
     </form>
   </div>

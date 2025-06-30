@@ -8,7 +8,7 @@ import { map, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class EmployeeService {
-  private urlEndPoint: string = "http://localhost:8082/apiWeb/empleado"
+  private urlEndPoint: string = "https://tiendaweb-3meq.onrender.com/apiWeb/empleado"
 
   private httpHeaders = new HttpHeaders(
     {

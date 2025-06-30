@@ -5,8 +5,8 @@ export type Car = {
 
 export type CarDetail = {
   idProducto: number;
-  nombre: string;
-  precio: number;
+  nombre?: string;
+  precio?: number;
   cantidad: number;
-  subtotal: number;
+  subtotal?: number;
 }

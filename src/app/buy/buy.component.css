@@ -15,7 +15,8 @@ section form{
   gap: 1rem;
 }
 
-section form .input-group input{
+section form .input-group input,
+section form .input-group select{
   border: solid thin #000;
   width: 100%;
   padding: 1rem;

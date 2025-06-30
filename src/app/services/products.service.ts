@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductsService {
-  private urlEndPoint: string = "http://localhost:8082/apiWeb/producto"
+  private urlEndPoint: string = "https://tiendaweb-3meq.onrender.com/apiWeb/producto"
 
   private httpHeaders = new HttpHeaders(
     {
