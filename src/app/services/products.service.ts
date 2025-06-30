@@ -35,7 +35,7 @@ export class ProductsService {
     console.log(data, imagenFile)
     const formData = new FormData();
     delete data.idProducto;
-
+    
     formData.append('archivo', imagenFile)
     formData.append('producto', JSON.stringify(data))
     return this.http.post<Product>(
@@ -44,12 +44,15 @@ export class ProductsService {
       {headers: this.httpHeadersImage }
     )
   }
-
+  
   editProduct(editProduct: Product): Observable<Product> {
+    const formData = new FormData();
+    formData.append('producto', JSON.stringify(editProduct))
+
     return this.http.put<Product>(
       `${this.urlEndPoint}/${editProduct.idProducto}`,
-      editProduct,
-      {headers: this.httpHeaders}
+      formData,
+      {headers: this.httpHeadersImage}
     )
   }
 

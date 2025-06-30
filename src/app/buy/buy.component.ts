@@ -10,6 +10,7 @@ import { Empleado } from '../models/employee.model';
 import { Pay, RequestBuy } from '../models/request.model';
 import { BuyService } from '../services/buy.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-buy',
@@ -62,8 +63,20 @@ export class BuyComponent implements OnInit{
         detallePedidosDTO: this.shopCarService.myProducts,
         pagoDTO: this.selectPay
       }).subscribe((pedido) => {
-        this.shopCarService.myProducts = []
-        this.router.navigate(['/home'])
+        Swal.fire({
+          title: "Éxito",
+          text: "Se ha añadido un nuevo producto al catalogo",
+          icon: "success",
+          customClass: {
+            confirmButton: "buttonConfirm"
+          },
+          buttonsStyling: false,
+          confirmButtonText: "OK",
+          timer: 3000
+        }).then((result) => {
+          this.shopCarService.myProducts = []
+          this.router.navigate(['/home'])
+        });
       })
     })
   }

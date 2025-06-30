@@ -8,10 +8,12 @@
       <label for="imagen">Imagen del producto</label>
     </div>
     <div class="file-input">
-      <input #archivo type="file" name="imagen" style="display: none;" (change)="onFileSelected($event)" accept="image/*">
-      <div class="icon-edit" (click)="archivo.click()">
-        <img src="camera.svg" alt="Edición de imagen">
-      </div>
+      @if (product().idProducto == 0) {
+        <input #archivo type="file" name="imagen" style="display: none;" (change)="onFileSelected($event)" accept="image/*">
+        <div class="icon-edit" (click)="archivo.click()">
+          <img src="camera.svg" alt="Edición de imagen">
+        </div>
+      }
       <div class="icon-edit boxImg">
         <img [src]="showImage" alt="Imagen del producto">
       </div>
@@ -30,8 +32,8 @@
         <input type="number" name="precio" [(ngModel)]="product().precio">
       </div>
       <div class="input-group">
-        <label for="precio">Stock del producto</label>
-        <input type="number" name="precio" [(ngModel)]="product().stock">
+        <label for="stock">Stock del producto</label>
+        <input type="number" name="stock" [(ngModel)]="product().stock">
       </div>
     </div>
     @if (product().idProducto != 0) {

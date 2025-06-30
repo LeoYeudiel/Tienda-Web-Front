@@ -3,6 +3,7 @@ import { Empleado } from '../models/employee.model';
 import { EmployeeFormComponent } from "./employee-form/employee-form.component";
 import { CurrencyPipe } from '@angular/common';
 import { EmployeeService } from '../services/employee.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-employee-manager',
@@ -19,7 +20,7 @@ export class EmployeeManagerComponent implements OnInit {
     nombre: '',
     correo: '',
     telefono: '',
-    cargo: '',
+    cargo: 'Cajero',
     salario: 0
   };
 
@@ -37,7 +38,7 @@ export class EmployeeManagerComponent implements OnInit {
       nombre: '',
       correo: '',
       telefono: '',
-      cargo: '',
+      cargo: 'Cajero',
       salario: 0
     }
     this.empleadoService.showEmployees().subscribe(
@@ -52,8 +53,36 @@ export class EmployeeManagerComponent implements OnInit {
   }
 
   deleteEmployee(idEmpleado: number) {
-    this.empleadoService.deleteEmployee(idEmpleado).subscribe((response) => this.empleadoService.showEmployees().subscribe(
-      (empleados) => this.employees = empleados
-    ));
+    Swal.fire({
+      title: "¿Estás seguro de eliminar?",
+      icon: "warning",
+      showCancelButton: true,
+      customClass: {
+        confirmButton: "buttonConfirm",
+        cancelButton: "buttonCancel"
+      },
+      buttonsStyling: false,
+      confirmButtonText: "Sí",
+      cancelButtonText: "No",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.empleadoService.deleteEmployee(idEmpleado).subscribe((response) => this.empleadoService.showEmployees().subscribe(
+          (empleados) => {
+            this.employees = empleados
+            Swal.fire({
+              title: "Éxito",
+              text: "Se ha eliminado el producto del catalogo",
+              icon: "success",
+              customClass: {
+                confirmButton: "buttonConfirm"
+              },
+              buttonsStyling: false,
+              confirmButtonText: "OK",
+              timer: 3000
+            })
+          }
+        ));
+      }
+    });
   }
 }

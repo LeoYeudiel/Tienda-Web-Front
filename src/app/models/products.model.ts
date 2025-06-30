@@ -10,7 +10,8 @@ export type Product = {
 export type ImgProduct = {
   idImagenProducto?: number;
   nombreImg: string;
-  uri: string;
+  url: string;
+  publicId: string;
   formato: string;
   producto: string;
 }

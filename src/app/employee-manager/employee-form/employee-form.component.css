@@ -47,7 +47,8 @@
 }
 
 .form-container form .input-group input,
-.form-container form .input-group textarea{
+.form-container form .input-group textarea,
+.form-container form .input-group select{
   border: solid thin #000;
   width: 100%;
   padding: 1rem;

@@ -1,7 +1,8 @@
-import { Component, inject, input, output } from '@angular/core';
+import { Component, inject, input, OnInit, output } from '@angular/core';
 import { Product } from '../../models/products.model';
 import { FormsModule } from '@angular/forms';
 import { ProductsService } from '../../services/products.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-product-form',
@@ -9,7 +10,7 @@ import { ProductsService } from '../../services/products.service';
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.css'
 })
-export class ProductFormComponent {
+export class ProductFormComponent implements OnInit {
   product = input<Product>({
     idProducto: 0,
     nombre: '',
@@ -18,8 +19,12 @@ export class ProductFormComponent {
     stock: 0
   })
   selectedFile: File | null = null;
-  showImage: string | null | ArrayBuffer = this.product().img?.uri || 'camera.svg'
+  showImage: string | null | ArrayBuffer | undefined= 'camera.svg'
   
+  ngOnInit() {
+    this.showImage =  this.product().img?.url || 'camera.svg'
+    console.log(this.product())
+  }
   close = output()
   productsService = inject(ProductsService);
 
@@ -41,12 +46,50 @@ export class ProductFormComponent {
   }
 
   addProduct() {
-    if (!this.selectedFile) return;
-
-    this.productsService.addProduct(this.product(), this.selectedFile).subscribe((producto) => this.close.emit())
+    if (!this.selectedFile) {
+      Swal.fire({
+        title: "Falta un paso más",
+        text: "Favor de añadir una imagen",
+        icon: "error",
+        customClass: {
+          confirmButton: "buttonConfirm"
+        },
+        buttonsStyling: false,
+        confirmButtonText: "OK",
+        timer: 3000
+      });
+    } else this.productsService.addProduct(this.product(), this.selectedFile).subscribe((producto) => {
+        Swal.fire({
+          title: "Éxito",
+          text: "Se ha añadido un nuevo producto al catalogo",
+          icon: "success",
+          customClass: {
+            confirmButton: "buttonConfirm"
+          },
+          buttonsStyling: false,
+          confirmButtonText: "OK",
+          timer: 3000
+        }).then((result) => {
+          this.close.emit()
+        });
+      })
   }
 
   editProduct() {
-    this.productsService.editProduct(this.product()).subscribe((producto) => this.close.emit())
+    this.productsService.editProduct(this.product()).subscribe((producto) => {
+      Swal.fire({
+        title: "Éxito",
+        text: "Se ha modificado el producto",
+        icon: "success",
+        customClass: {
+          confirmButton: "buttonConfirm"
+        },
+        buttonsStyling: false,
+        confirmButtonText: "OK",
+        timer: 3000
+      }).then((result) => {
+        this.close.emit()
+      });
+    })
   }
 }

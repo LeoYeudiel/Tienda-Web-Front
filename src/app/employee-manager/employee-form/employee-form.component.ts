@@ -2,7 +2,7 @@ import { Component, inject, input, output } from '@angular/core';
 import { Empleado } from '../../models/employee.model';
 import { FormsModule } from '@angular/forms';
 import { EmployeeService } from '../../services/employee.service';
-import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-employee-form',
@@ -17,7 +17,7 @@ export class EmployeeFormComponent {
     nombre: '',
     correo: '',
     telefono: '',
-    cargo: '',
+    cargo: 'Cajero',
     salario: 0
   })
 
@@ -28,11 +28,44 @@ export class EmployeeFormComponent {
     this.close.emit();
   }
 
+  getCargo(event: any) {
+    this.employee().cargo = event.target.value
+  }
+  
   addEmployee() {
-    this.employeeService.addEmployee(this.employee()).subscribe((empleado) => this.close.emit())
+    console.log(this.employee())
+    this.employeeService.addEmployee(this.employee()).subscribe((empleado) => {
+      Swal.fire({
+        title: "Éxito",
+        text: "Se ha añadido un nuevo empleado",
+        icon: "success",
+        customClass: {
+          confirmButton: "buttonConfirm"
+        },
+        buttonsStyling: false,
+        confirmButtonText: "OK",
+        timer: 3000
+      }).then((result) => {
+        this.close.emit()
+      });
+    })
   }
 
   editEmployee() {
-    this.employeeService.editEmployee(this.employee()).subscribe((empleado) => this.close.emit())
+    this.employeeService.editEmployee(this.employee()).subscribe((empleado) => {
+      Swal.fire({
+        title: "Éxito",
+        text: "Se ha editado al empleado",
+        icon: "success",
+        customClass: {
+          confirmButton: "buttonConfirm"
+        },
+        buttonsStyling: false,
+        confirmButtonText: "OK",
+        timer: 3000
+      }).then((result) => {
+        this.close.emit()
+      });
+    })
   }
 }

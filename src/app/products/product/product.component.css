@@ -21,6 +21,7 @@ article{
 article .contentImg{
   width: 320px;
   height: 320px;
+  padding: 1rem;
 }
 
 article .contentImg img{

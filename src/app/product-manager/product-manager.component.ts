@@ -3,6 +3,7 @@ import { CurrencyPipe } from '@angular/common';
 import { ProductFormComponent } from "./product-form/product-form.component";
 import { Product } from '../models/products.model';
 import { ProductsService } from '../services/products.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product-manager',
@@ -49,11 +50,39 @@ export class ProductManagerComponent implements OnInit{
   }
 
   deleteProduct(idProducto: number) {
-    this.productsService.deleteProduct(idProducto).subscribe(
-      (response) =>
-        this.productsService.showProducts().subscribe(
-          (productos) => this.products = productos
-        )
-    );
+    Swal.fire({
+      title: "¿Estás seguro de eliminar?",
+      icon: "warning",
+      showCancelButton: true,
+      customClass: {
+        confirmButton: "buttonConfirm",
+        cancelButton: "buttonCancel"
+      },
+      buttonsStyling: false,
+      confirmButtonText: "Sí",
+      cancelButtonText: "No",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.productsService.deleteProduct(idProducto).subscribe(
+          (response) =>
+            this.productsService.showProducts().subscribe(
+              (productos) => {
+                this.products = productos
+                Swal.fire({
+                  title: "Éxito",
+                  text: "Se ha eliminado el producto del catalogo",
+                  icon: "success",
+                  customClass: {
+                    confirmButton: "buttonConfirm"
+                  },
+                  buttonsStyling: false,
+                  confirmButtonText: "OK",
+                  timer: 3000
+                })
+              }
+            )
+        );
+      }
+    });
   }
 }

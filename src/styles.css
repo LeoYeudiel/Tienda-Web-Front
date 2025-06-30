@@ -23,3 +23,23 @@
 body{
   position: relative;
 }
+
+.buttonConfirm{
+  border: none;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: var(--secondaryColor);
+  box-shadow: 3px 3px 0 2px var(--primaryColor);
+  transition: 0.5s;
+}
+
+.buttonCancel{
+  border: none;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: var(--backgroundColor);
+  box-shadow: 3px 3px 0 2px var(--primaryColor);
+  transition: 0.5s;
+}

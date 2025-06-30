@@ -21,7 +21,8 @@ export class ShopCarService{
         nombre: product.nombre,
         subtotal: cantidad * product.precio,
         cantidad: cantidad,
-        precio: product.precio
+        precio: product.precio,
+        img: product.img?.url
       })
     } else {
       if (cantidad > 0) {
@@ -32,7 +33,8 @@ export class ShopCarService{
             nombre: product.nombre,
             subtotal: cantidad * product.precio,
             cantidad: cantidad,
-            precio: product.precio
+            precio: product.precio,
+            img: product.img?.url
           }
         ]
       }

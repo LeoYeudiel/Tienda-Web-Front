@@ -9,4 +9,5 @@ export type CarDetail = {
   precio?: number;
   cantidad: number;
   subtotal?: number;
+  img?: string;
 }
